@@ -13,12 +13,12 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
       {/* Sidebar */}
       <div 
         className={`bg-white shadow-lg transition-all duration-300 ${
-          sidebarOpen ? 'w-64' : 'w-20'
+          sidebarOpen ? 'w-64' : 'w-16'
         }`}
       >
         <div className="p-4 flex items-center justify-between">
           <h1 className={`font-bold text-xl text-primary transition-opacity duration-300 ${
-            !sidebarOpen && 'opacity-0 hidden'
+            !sidebarOpen && 'opacity-0 w-0 overflow-hidden'
           }`}>
             لوحة التحكم
           </h1>
@@ -32,10 +32,10 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
           </Button>
         </div>
         <nav className="mt-4">
-          <SidebarItem icon={<Home className="h-5 w-5" />} label="الرئيسية" active />
-          <SidebarItem icon={<Settings className="h-5 w-5" />} label="الإعدادات" />
-          <SidebarItem icon={<Users className="h-5 w-5" />} label="المستخدمين" />
-          <SidebarItem icon={<FileText className="h-5 w-5" />} label="التقارير" />
+          <SidebarItem icon={<Home className="h-5 w-5" />} label="الرئيسية" active sidebarOpen={sidebarOpen} />
+          <SidebarItem icon={<Settings className="h-5 w-5" />} label="الإعدادات" sidebarOpen={sidebarOpen} />
+          <SidebarItem icon={<Users className="h-5 w-5" />} label="المستخدمين" sidebarOpen={sidebarOpen} />
+          <SidebarItem icon={<FileText className="h-5 w-5" />} label="التقارير" sidebarOpen={sidebarOpen} />
         </nav>
       </div>
 
@@ -85,11 +85,13 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
 const SidebarItem = ({ 
   icon, 
   label, 
-  active = false 
+  active = false,
+  sidebarOpen = true
 }: { 
   icon: React.ReactNode;
   label: string;
   active?: boolean;
+  sidebarOpen?: boolean;
 }) => {
   return (
     <a
@@ -99,7 +101,11 @@ const SidebarItem = ({
       }`}
     >
       {icon}
-      <span className="font-medium transition-opacity duration-300 sidebar-label">{label}</span>
+      <span className={`font-medium transition-all duration-300 whitespace-nowrap ${
+        !sidebarOpen ? 'w-0 opacity-0 overflow-hidden' : 'w-auto opacity-100'
+      }`}>
+        {label}
+      </span>
     </a>
   );
 };
