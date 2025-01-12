@@ -87,7 +87,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           <Link to="/reports">
             <SidebarItem icon={<FileText className="h-5 w-5" />} label="إدارة التقارير" sidebarOpen={sidebarOpen} />
           </Link>
-          <SidebarItem icon={<Bell className="h-5 w-5" />} label="الإشعارات" sidebarOpen={sidebarOpen} />
+          <Link to="/notifications">
+            <SidebarItem icon={<Bell className="h-5 w-5" />} label="الإشعارات" sidebarOpen={sidebarOpen} />
+          </Link>
           <SidebarItem icon={<Settings className="h-5 w-5" />} label="الإعدادات" sidebarOpen={sidebarOpen} />
         </nav>
       </div>
