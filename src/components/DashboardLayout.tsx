@@ -28,7 +28,7 @@ import {
 } from "@/components/ui/collapsible";
 import { ChevronDown } from "lucide-react";
 
-export const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const [sidebarOpen, setSidebarOpen] = useState(true);
 
   return (
@@ -205,3 +205,5 @@ const SidebarDropdown = ({
     </Collapsible>
   );
 };
+
+export default DashboardLayout;
