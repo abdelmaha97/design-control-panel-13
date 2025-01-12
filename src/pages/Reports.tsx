@@ -7,7 +7,6 @@ import { ChartContainer, ChartLegend, ChartTooltip } from "@/components/ui/chart
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from 'recharts';
 import { Download, FileSpreadsheet, FileText } from 'lucide-react';
 
-// Dummy data for demonstration
 const data = [
   { name: 'يناير', tenders: 4000, jobs: 2400, projects: 2400 },
   { name: 'فبراير', tenders: 3000, jobs: 1398, projects: 2210 },
@@ -24,12 +23,10 @@ const Reports = () => {
 
   const exportToPDF = () => {
     console.log('Exporting to PDF...');
-    // Implementation for PDF export would go here
   };
 
   const exportToExcel = () => {
     console.log('Exporting to Excel...');
-    // Implementation for Excel export would go here
   };
 
   return (
