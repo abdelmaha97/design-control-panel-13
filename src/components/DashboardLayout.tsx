@@ -1,4 +1,4 @@
-import { Bell, Mail, Menu, Search } from "lucide-react";
+import { Bell, Mail, Menu, Search, Home, Settings, Users, FileText } from "lucide-react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Avatar } from "./ui/avatar";
@@ -11,18 +11,31 @@ export const DashboardLayout = ({ children }: { children: React.ReactNode }) => 
   return (
     <div className="min-h-screen bg-gray-50 flex" dir="rtl">
       {/* Sidebar */}
-      <div className={`bg-white shadow-lg transition-all duration-300 ${sidebarOpen ? 'w-64' : 'w-20'}`}>
+      <div 
+        className={`bg-white shadow-lg transition-all duration-300 ${
+          sidebarOpen ? 'w-64' : 'w-20'
+        }`}
+      >
         <div className="p-4 flex items-center justify-between">
-          <h1 className={`font-bold text-xl text-primary ${!sidebarOpen && 'hidden'}`}>لوحة التحكم</h1>
-          <Button variant="ghost" size="icon" onClick={() => setSidebarOpen(!sidebarOpen)}>
+          <h1 className={`font-bold text-xl text-primary transition-opacity duration-300 ${
+            !sidebarOpen && 'opacity-0 hidden'
+          }`}>
+            لوحة التحكم
+          </h1>
+          <Button 
+            variant="ghost" 
+            size="icon" 
+            onClick={() => setSidebarOpen(!sidebarOpen)}
+            className="hover:bg-gray-100"
+          >
             <Menu className="h-5 w-5" />
           </Button>
         </div>
         <nav className="mt-4">
-          <SidebarItem icon="home" label="الرئيسية" active />
-          <SidebarItem icon="settings" label="الإعدادات" />
-          <SidebarItem icon="users" label="المستخدمين" />
-          <SidebarItem icon="file" label="التقارير" />
+          <SidebarItem icon={<Home className="h-5 w-5" />} label="الرئيسية" active />
+          <SidebarItem icon={<Settings className="h-5 w-5" />} label="الإعدادات" />
+          <SidebarItem icon={<Users className="h-5 w-5" />} label="المستخدمين" />
+          <SidebarItem icon={<FileText className="h-5 w-5" />} label="التقارير" />
         </nav>
       </div>
 
@@ -74,7 +87,7 @@ const SidebarItem = ({
   label, 
   active = false 
 }: { 
-  icon: string;
+  icon: React.ReactNode;
   label: string;
   active?: boolean;
 }) => {
@@ -85,8 +98,8 @@ const SidebarItem = ({
         active ? 'text-primary border-r-2 border-primary bg-blue-50' : ''
       }`}
     >
-      <span className="material-icons-outlined">{icon}</span>
-      <span className="font-medium">{label}</span>
+      {icon}
+      <span className="font-medium transition-opacity duration-300 sidebar-label">{label}</span>
     </a>
   );
 };
