@@ -57,7 +57,7 @@ const Sidebar = () => {
         <SidebarItem icon={<DollarSign className="h-5 w-5" />} label="إدارة المزادات" sidebarOpen={sidebarOpen} />
         <SidebarItem icon={<FileText className="h-5 w-5" />} label="إدارة التقارير" to="/reports" sidebarOpen={sidebarOpen} />
         <SidebarItem icon={<Bell className="h-5 w-5" />} label="الإشعارات" to="/notifications" sidebarOpen={sidebarOpen} />
-        <SidebarItem icon={<Settings className="h-5 w-5" />} label="الإعدادات" sidebarOpen={sidebarOpen} />
+        <SidebarItem icon={<Settings className="h-5 w-5" />} label="الإعدادات" to="/settings" sidebarOpen={sidebarOpen} />
       </nav>
     </div>
   );
