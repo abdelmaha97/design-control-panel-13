@@ -21,6 +21,7 @@ import { Input } from "./ui/input";
 import { Avatar } from "./ui/avatar";
 import { Badge } from "./ui/badge";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import {
   Collapsible,
   CollapsibleContent,
@@ -55,7 +56,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           </Button>
         </div>
         <nav className="mt-4">
-          <SidebarItem icon={<Home className="h-5 w-5" />} label="الرئيسية" active sidebarOpen={sidebarOpen} />
+          <Link to="/">
+            <SidebarItem icon={<Home className="h-5 w-5" />} label="الرئيسية" active sidebarOpen={sidebarOpen} />
+          </Link>
           
           <SidebarDropdown 
             icon={<Folder className="h-5 w-5" />}
@@ -81,7 +84,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
           <SidebarItem icon={<Briefcase className="h-5 w-5" />} label="إدارة الوظائف" sidebarOpen={sidebarOpen} />
           <SidebarItem icon={<Gavel className="h-5 w-5" />} label="إدارة المناقصات" sidebarOpen={sidebarOpen} />
           <SidebarItem icon={<DollarSign className="h-5 w-5" />} label="إدارة المزادات" sidebarOpen={sidebarOpen} />
-          <SidebarItem icon={<FileText className="h-5 w-5" />} label="إدارة التقارير" sidebarOpen={sidebarOpen} />
+          <Link to="/reports">
+            <SidebarItem icon={<FileText className="h-5 w-5" />} label="إدارة التقارير" sidebarOpen={sidebarOpen} />
+          </Link>
           <SidebarItem icon={<Bell className="h-5 w-5" />} label="الإشعارات" sidebarOpen={sidebarOpen} />
           <SidebarItem icon={<Settings className="h-5 w-5" />} label="الإعدادات" sidebarOpen={sidebarOpen} />
         </nav>
@@ -142,9 +147,8 @@ const SidebarItem = ({
   sidebarOpen?: boolean;
 }) => {
   return (
-    <a
-      href="#"
-      className={`flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 transition-colors ${
+    <div
+      className={`flex items-center gap-3 px-4 py-3 text-gray-600 hover:bg-gray-50 transition-colors cursor-pointer ${
         active ? 'text-primary border-r-2 border-primary bg-blue-50' : ''
       }`}
     >
@@ -154,7 +158,7 @@ const SidebarItem = ({
       }`}>
         {label}
       </span>
-    </a>
+    </div>
   );
 };
 
