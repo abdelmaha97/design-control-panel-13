@@ -3,7 +3,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { Globe, Shield, Settings } from "lucide-react";
+import { Globe, Shield, Settings as SettingsIcon } from "lucide-react";
 import { useState } from "react";
 
 const roles = [
@@ -24,19 +24,19 @@ const roles = [
   },
 ];
 
-const Settings = () => {
+const SettingsPage = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("ar");
   const [logo, setLogo] = useState("");
 
   return (
     <div className="container mx-auto p-6">
       <div className="flex items-center gap-2 mb-6">
-        <Settings className="h-6 w-6" />
+        <SettingsIcon className="h-6 w-6" />
         <h1 className="text-2xl font-bold">إعدادات النظام</h1>
       </div>
 
       <Tabs defaultValue="roles" dir="rtl">
-        <TabsList className="mb-4">
+        <TabsList>
           <TabsTrigger value="roles" className="gap-2">
             <Shield className="h-4 w-4" />
             الأدوار والصلاحيات
@@ -136,4 +136,4 @@ const Settings = () => {
   );
 };
 
-export default Settings;
+export default SettingsPage;
