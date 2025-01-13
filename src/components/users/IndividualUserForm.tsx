@@ -16,7 +16,8 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { IndividualUser, UserStatus } from "@/types/users";
+import { IndividualUser } from "@/types/users";
+import ImageUpload from "@/components/news/ImageUpload";
 
 interface IndividualUserFormProps {
   defaultValues?: Partial<IndividualUser>;
@@ -34,6 +35,7 @@ const IndividualUserForm = ({
       name: "",
       email: "",
       phone: "",
+      photo_url: "",
       type: "individual",
       status: "active",
       profile: {
@@ -52,6 +54,14 @@ const IndividualUserForm = ({
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="md:col-span-2">
+            <ImageUpload
+              form={form}
+              name="photo_url"
+              label="الصورة الشخصية"
+            />
+          </div>
+
           <FormField
             control={form.control}
             name="name"
