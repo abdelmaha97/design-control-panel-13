@@ -30,7 +30,7 @@ interface NewsFormProps {
 const NewsForm = ({ form, onSubmit, isEditing, onCancel }: NewsFormProps) => {
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full max-w-2xl mx-auto">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <FormField
             control={form.control}

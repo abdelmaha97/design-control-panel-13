@@ -62,15 +62,15 @@ const ResultDialog = ({ open, onOpenChange, result, onSave }: ResultDialogProps)
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-[95vw] max-w-3xl">
+      <DialogContent className="w-[95vw] max-w-3xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-xl md:text-2xl">
             {result ? "تعديل" : "إضافة"} نتيجة
           </DialogTitle>
         </DialogHeader>
-        <div className="mt-4">
+        <div className="mt-4 px-2 md:px-4">
           <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full max-w-2xl mx-auto">
+            <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <FormField
                   control={form.control}

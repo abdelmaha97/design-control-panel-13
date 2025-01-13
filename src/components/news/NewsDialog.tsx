@@ -45,13 +45,13 @@ const NewsDialog = ({ open, onOpenChange, news, onSave }: NewsDialogProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="w-[95vw] max-w-3xl">
+      <DialogContent className="w-[95vw] max-w-3xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-xl md:text-2xl">
             {news ? "تعديل" : "إضافة"} خبر/فعالية
           </DialogTitle>
         </DialogHeader>
-        <div className="mt-4">
+        <div className="mt-4 px-2 md:px-4">
           <NewsForm
             form={form}
             onSubmit={onSubmit}
