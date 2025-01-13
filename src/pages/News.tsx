@@ -10,10 +10,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import type { News, NewsStatus, NewsType } from "@/types/news";
 import NewsDialog from "@/components/news/NewsDialog";
 import { format } from "date-fns";
 import { ar } from "date-fns/locale";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const initialNews: News[] = [
   {
@@ -54,6 +56,7 @@ const NewsPage = () => {
   const [news, setNews] = useState<News[]>(initialNews);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedNews, setSelectedNews] = useState<News | null>(null);
+  const isMobile = useIsMobile();
 
   const handleAdd = () => {
     setSelectedNews(null);
@@ -95,17 +98,44 @@ const NewsPage = () => {
     return type === "news" ? "خبر" : "فعالية";
   };
 
-  return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">إدارة الأخبار والفعاليات</h1>
-        <Button onClick={handleAdd}>
-          <Plus className="h-4 w-4 ml-2" />
-          إضافة جديد
-        </Button>
-      </div>
+  const renderMobileView = () => (
+    <div className="space-y-4">
+      {news.map((item) => (
+        <div key={item.id} className="bg-white p-4 rounded-lg shadow space-y-3">
+          <div className="flex justify-between items-start">
+            <h3 className="font-medium text-lg">{item.title}</h3>
+            <Badge variant="outline">{getTypeLabel(item.type)}</Badge>
+          </div>
+          <div className="space-y-2 text-sm text-gray-600">
+            <p>الحالة: <Badge className={getStatusColor(item.status)}>
+              {item.status === "published" ? "منشور" : item.status === "draft" ? "مسودة" : "مؤرشف"}
+            </Badge></p>
+            <p>تاريخ النشر: {item.published_at
+              ? format(new Date(item.published_at), "dd MMMM yyyy", { locale: ar })
+              : "-"}</p>
+            <p>آخر تحديث: {format(new Date(item.updated_at), "dd MMMM yyyy", { locale: ar })}</p>
+          </div>
+          <div className="flex gap-2 pt-2">
+            <Button variant="outline" size="sm" onClick={() => handleEdit(item)} className="flex-1">
+              تعديل
+            </Button>
+            <Button
+              variant="destructive"
+              size="sm"
+              onClick={() => handleDelete(item.id)}
+              className="flex-1"
+            >
+              حذف
+            </Button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 
-      <div className="border rounded-lg">
+  const renderDesktopView = () => (
+    <div className="border rounded-lg">
+      <ScrollArea className="h-[calc(100vh-12rem)]">
         <Table>
           <TableHeader>
             <TableRow>
@@ -155,7 +185,21 @@ const NewsPage = () => {
             ))}
           </TableBody>
         </Table>
+      </ScrollArea>
+    </div>
+  );
+
+  return (
+    <div className="p-4 md:p-6 space-y-6">
+      <div className="flex items-center justify-between">
+        <h1 className="text-xl md:text-2xl font-bold">إدارة الأخبار والفعاليات</h1>
+        <Button onClick={handleAdd}>
+          <Plus className="h-4 w-4 ml-2" />
+          إضافة جديد
+        </Button>
       </div>
+
+      {isMobile ? renderMobileView() : renderDesktopView()}
 
       <NewsDialog
         open={isDialogOpen}

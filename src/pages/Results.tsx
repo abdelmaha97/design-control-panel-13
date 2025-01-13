@@ -10,10 +10,12 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import type { Result } from "@/types/results";
 import ResultDialog from "@/components/results/ResultDialog";
 import { format } from "date-fns";
 import { ar } from "date-fns/locale";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 const initialResults: Result[] = [
   {
@@ -76,6 +78,7 @@ const ResultsPage = () => {
   const [results, setResults] = useState<Result[]>(initialResults);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedResult, setSelectedResult] = useState<Result | null>(null);
+  const isMobile = useIsMobile();
 
   const handleAdd = () => {
     setSelectedResult(null);
@@ -122,17 +125,43 @@ const ResultsPage = () => {
     }
   };
 
-  return (
-    <div className="p-6 space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-2xl font-bold">إدارة النتائج</h1>
-        <Button onClick={handleAdd}>
-          <Plus className="h-4 w-4 ml-2" />
-          إضافة نتيجة
-        </Button>
-      </div>
+  const renderMobileView = () => (
+    <div className="space-y-4">
+      {results.map((result) => (
+        <div key={result.id} className="bg-white p-4 rounded-lg shadow space-y-3">
+          <div className="flex justify-between items-start">
+            <h3 className="font-medium text-lg">{result.title}</h3>
+            <Badge variant="outline">{getTypeLabel(result.type)}</Badge>
+          </div>
+          <div className="space-y-2 text-sm text-gray-600">
+            <p>الجهة: {result.entity}</p>
+            <p>الموقع: {result.location || "-"}</p>
+            <p>التاريخ: {format(new Date(result.date), "dd MMMM yyyy", { locale: ar })}</p>
+            <p>الحالة: <Badge className={getStatusColor(result.status)}>
+              {result.status === "published" ? "منشور" : result.status === "draft" ? "مسودة" : "مؤرشف"}
+            </Badge></p>
+          </div>
+          <div className="flex gap-2 pt-2">
+            <Button variant="outline" size="sm" onClick={() => handleEdit(result)} className="flex-1">
+              تعديل
+            </Button>
+            <Button
+              variant="destructive"
+              size="sm"
+              onClick={() => handleDelete(result.id)}
+              className="flex-1"
+            >
+              حذف
+            </Button>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
 
-      <div className="border rounded-lg">
+  const renderDesktopView = () => (
+    <div className="border rounded-lg">
+      <ScrollArea className="h-[calc(100vh-12rem)]">
         <Table>
           <TableHeader>
             <TableRow>
@@ -157,20 +186,12 @@ const ResultsPage = () => {
                 </TableCell>
                 <TableCell>
                   <Badge className={getStatusColor(result.status)}>
-                    {result.status === "published"
-                      ? "منشور"
-                      : result.status === "draft"
-                      ? "مسودة"
-                      : "مؤرشف"}
+                    {result.status === "published" ? "منشور" : result.status === "draft" ? "مسودة" : "مؤرشف"}
                   </Badge>
                 </TableCell>
                 <TableCell>
                   <div className="flex items-center gap-2">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      onClick={() => handleEdit(result)}
-                    >
+                    <Button variant="outline" size="sm" onClick={() => handleEdit(result)}>
                       تعديل
                     </Button>
                     <Button
@@ -186,7 +207,21 @@ const ResultsPage = () => {
             ))}
           </TableBody>
         </Table>
+      </ScrollArea>
+    </div>
+  );
+
+  return (
+    <div className="p-4 md:p-6 space-y-6">
+      <div className="flex items-center justify-between">
+        <h1 className="text-xl md:text-2xl font-bold">إدارة النتائج</h1>
+        <Button onClick={handleAdd}>
+          <Plus className="h-4 w-4 ml-2" />
+          إضافة نتيجة
+        </Button>
       </div>
+
+      {isMobile ? renderMobileView() : renderDesktopView()}
 
       <ResultDialog
         open={isDialogOpen}
