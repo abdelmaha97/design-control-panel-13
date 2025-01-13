@@ -120,6 +120,20 @@ const NewsDialog = ({ open, onOpenChange, news, onSave }: NewsDialogProps) => {
 
             <FormField
               control={form.control}
+              name="image_url"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>رابط الصورة</FormLabel>
+                  <FormControl>
+                    <Input placeholder="أدخل رابط الصورة" {...field} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
               name="status"
               render={({ field }) => (
                 <FormItem>
