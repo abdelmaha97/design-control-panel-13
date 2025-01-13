@@ -36,8 +36,8 @@ const Sidebar = () => {
           label="إدارة المحتوى"
           sidebarOpen={sidebarOpen}
           items={[
-            { icon: <Newspaper className="h-5 w-5" />, label: "الاخبار والفعاليات" },
-            { icon: <Megaphone className="h-5 w-5" />, label: "اعلان النتائج" },
+            { icon: <Newspaper className="h-5 w-5" />, label: "الاخبار والفعاليات", to: "/news" },
+            { icon: <Megaphone className="h-5 w-5" />, label: "اعلان النتائج", to: "/results" },
             { icon: <Briefcase className="h-5 w-5" />, label: "المشاريع" },
           ]}
         />
