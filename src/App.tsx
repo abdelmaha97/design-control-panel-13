@@ -7,6 +7,7 @@ import SettingsPage from './pages/Settings';
 import NewsPage from './pages/News';
 import ResultsPage from './pages/Results';
 import ProjectsPage from './pages/Projects';
+import IndividualUsersPage from './pages/IndividualUsers';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/news" element={<NewsPage />} />
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
+          <Route path="/individual-users" element={<IndividualUsersPage />} />
         </Routes>
       </DashboardLayout>
     </Router>

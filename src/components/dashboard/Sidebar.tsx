@@ -47,8 +47,8 @@ const Sidebar = () => {
           label="إدارة المستخدمين"
           sidebarOpen={sidebarOpen}
           items={[
-            { icon: <User className="h-5 w-5" />, label: "افراد" },
-            { icon: <Building className="h-5 w-5" />, label: "شركات" },
+            { icon: <User className="h-5 w-5" />, label: "افراد", to: "/individual-users" },
+            { icon: <Building className="h-5 w-5" />, label: "شركات", to: "/companies" },
           ]}
         />
 
