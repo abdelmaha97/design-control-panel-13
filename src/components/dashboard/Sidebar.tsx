@@ -38,7 +38,7 @@ const Sidebar = () => {
           items={[
             { icon: <Newspaper className="h-5 w-5" />, label: "الاخبار والفعاليات", to: "/news" },
             { icon: <Megaphone className="h-5 w-5" />, label: "اعلان النتائج", to: "/results" },
-            { icon: <Briefcase className="h-5 w-5" />, label: "المشاريع" },
+            { icon: <Briefcase className="h-5 w-5" />, label: "المشاريع", to: "/projects" },
           ]}
         />
 
