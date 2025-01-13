@@ -8,6 +8,7 @@ import NewsPage from './pages/News';
 import ResultsPage from './pages/Results';
 import ProjectsPage from './pages/Projects';
 import IndividualUsersPage from './pages/IndividualUsers';
+import CompaniesPage from './pages/Companies';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/projects" element={<ProjectsPage />} />
           <Route path="/individual-users" element={<IndividualUsersPage />} />
+          <Route path="/companies" element={<CompaniesPage />} />
         </Routes>
       </DashboardLayout>
     </Router>

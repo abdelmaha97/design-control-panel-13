@@ -28,6 +28,23 @@ export interface IndividualProfile {
   created_at: string;
 }
 
+export interface CompanyProfile {
+  id: string;
+  user_id: string;
+  business_name: string;
+  commercial_reg_no: string;
+  tax_number?: string;
+  address?: string;
+  city?: string;
+  industry?: string;
+  company_size?: string;
+  created_at: string;
+}
+
 export interface IndividualUser extends User {
   profile: IndividualProfile;
+}
+
+export interface CompanyUser extends User {
+  profile: CompanyProfile;
 }
