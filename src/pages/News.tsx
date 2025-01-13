@@ -10,12 +10,11 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import { Badge } from "@/components/ui/badge";
-import { News, NewsStatus, NewsType } from "@/types/news";
+import type { News, NewsStatus, NewsType } from "@/types/news";
 import NewsDialog from "@/components/news/NewsDialog";
 import { format } from "date-fns";
 import { ar } from "date-fns/locale";
 
-// Mock data for initial news items
 const initialNews: News[] = [
   {
     id: "1",
@@ -48,7 +47,7 @@ const initialNews: News[] = [
   },
 ];
 
-const News = () => {
+const NewsPage = () => {
   const [news, setNews] = useState<News[]>(initialNews);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [selectedNews, setSelectedNews] = useState<News | null>(null);
@@ -165,4 +164,4 @@ const News = () => {
   );
 };
 
-export default News;
+export default NewsPage;
