@@ -5,6 +5,7 @@ import Reports from './pages/Reports';
 import Notifications from './pages/Notifications';
 import SettingsPage from './pages/Settings';
 import NewsPage from './pages/News';
+import ResultsPage from './pages/Results';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/notifications" element={<Notifications />} />
           <Route path="/settings" element={<SettingsPage />} />
           <Route path="/news" element={<NewsPage />} />
+          <Route path="/results" element={<ResultsPage />} />
         </Routes>
       </DashboardLayout>
     </Router>
