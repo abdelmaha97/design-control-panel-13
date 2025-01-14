@@ -53,9 +53,11 @@ const CompanyUserForm = ({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full max-w-5xl mx-auto">
-        <div className="grid place-items-center w-full">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full max-w-5xl mx-auto p-4 md:p-6">
+        {/* صورة الشركة */}
+        <div className="grid place-items-center w-full bg-white rounded-lg shadow-sm p-4 md:p-6">
           <div className="w-full max-w-md">
+            <h3 className="text-lg font-semibold mb-6 text-right">شعار الشركة</h3>
             <ImageUpload
               form={form}
               name="photo_url"
@@ -64,6 +66,7 @@ const CompanyUserForm = ({
           </div>
         </div>
 
+        {/* البيانات الأساسية */}
         <div className="bg-white rounded-lg shadow-sm p-4 md:p-6">
           <h3 className="text-lg font-semibold mb-6 text-right">البيانات الأساسية</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
@@ -137,6 +140,7 @@ const CompanyUserForm = ({
           </div>
         </div>
 
+        {/* بيانات الشركة */}
         <div className="bg-white rounded-lg shadow-sm p-4 md:p-6">
           <h3 className="text-lg font-semibold mb-6 text-right">بيانات الشركة</h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
