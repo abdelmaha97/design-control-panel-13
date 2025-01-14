@@ -1,5 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import DashboardLayout from './components/DashboardLayout';
+import ProtectedRoute from './components/ProtectedRoute';
+import Login from './pages/Login';
 import Index from './pages/Index';
 import Reports from './pages/Reports';
 import Notifications from './pages/Notifications';
@@ -13,19 +15,29 @@ import CompaniesPage from './pages/Companies';
 function App() {
   return (
     <Router>
-      <DashboardLayout>
-        <Routes>
-          <Route path="/" element={<Index />} />
-          <Route path="/reports" element={<Reports />} />
-          <Route path="/notifications" element={<Notifications />} />
-          <Route path="/settings" element={<SettingsPage />} />
-          <Route path="/news" element={<NewsPage />} />
-          <Route path="/results" element={<ResultsPage />} />
-          <Route path="/projects" element={<ProjectsPage />} />
-          <Route path="/individual-users" element={<IndividualUsersPage />} />
-          <Route path="/companies" element={<CompaniesPage />} />
-        </Routes>
-      </DashboardLayout>
+      <Routes>
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/*"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <Routes>
+                  <Route path="/" element={<Index />} />
+                  <Route path="/reports" element={<Reports />} />
+                  <Route path="/notifications" element={<Notifications />} />
+                  <Route path="/settings" element={<SettingsPage />} />
+                  <Route path="/news" element={<NewsPage />} />
+                  <Route path="/results" element={<ResultsPage />} />
+                  <Route path="/projects" element={<ProjectsPage />} />
+                  <Route path="/individual-users" element={<IndividualUsersPage />} />
+                  <Route path="/companies" element={<CompaniesPage />} />
+                </Routes>
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
     </Router>
   );
 }
