@@ -53,18 +53,20 @@ const CompanyUserForm = ({
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 max-w-5xl mx-auto p-4">
-        <div className="w-full max-w-md mx-auto mb-8">
-          <ImageUpload
-            form={form}
-            name="photo_url"
-            label="شعار الشركة"
-          />
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8 w-full max-w-5xl mx-auto">
+        <div className="grid place-items-center w-full">
+          <div className="w-full max-w-md">
+            <ImageUpload
+              form={form}
+              name="photo_url"
+              label="شعار الشركة"
+            />
+          </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <h3 className="text-lg font-semibold mb-4">البيانات الأساسية</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="bg-white rounded-lg shadow-sm p-4 md:p-6">
+          <h3 className="text-lg font-semibold mb-6 text-right">البيانات الأساسية</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             <FormField
               control={form.control}
               name="name"
@@ -135,9 +137,9 @@ const CompanyUserForm = ({
           </div>
         </div>
 
-        <div className="bg-white rounded-lg shadow-sm p-6">
-          <h3 className="text-lg font-semibold mb-4">بيانات الشركة</h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="bg-white rounded-lg shadow-sm p-4 md:p-6">
+          <h3 className="text-lg font-semibold mb-6 text-right">بيانات الشركة</h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             <FormField
               control={form.control}
               name="profile.business_name"
@@ -238,7 +240,7 @@ const CompanyUserForm = ({
           </div>
         </div>
 
-        <div className="flex justify-end gap-4">
+        <div className="flex justify-end gap-4 mt-8">
           <Button type="submit" disabled={isLoading} className="w-full sm:w-auto">
             {defaultValues ? "تحديث" : "إضافة"}
           </Button>
