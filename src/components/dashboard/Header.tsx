@@ -1,10 +1,25 @@
-import { Bell, Mail, Search } from "lucide-react";
+import { Bell, Mail, Settings, LogOut, User } from "lucide-react";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
-import { Avatar } from "../ui/avatar";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 import { Badge } from "../ui/badge";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "../ui/dropdown-menu";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("isAuthenticated");
+    navigate("/login");
+  };
+
   return (
     <header className="bg-white shadow-sm">
       <div className="flex items-center justify-between px-6 py-4">
@@ -30,9 +45,29 @@ const Header = () => {
               5
             </Badge>
           </Button>
-          <Avatar className="h-8 w-8">
-            <img src="/placeholder.svg" alt="User" className="rounded-full" />
-          </Avatar>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="relative h-8 w-8 rounded-full">
+                <Avatar className="h-8 w-8">
+                  <AvatarImage src="/placeholder.svg" alt="User" />
+                  <AvatarFallback>
+                    <User className="h-4 w-4" />
+                  </AvatarFallback>
+                </Avatar>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="w-56">
+              <DropdownMenuItem onClick={() => navigate("/settings")}>
+                <Settings className="ml-2 h-4 w-4" />
+                <span>الإعدادات</span>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem onClick={handleLogout}>
+                <LogOut className="ml-2 h-4 w-4" />
+                <span>تسجيل الخروج</span>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
       </div>
     </header>
