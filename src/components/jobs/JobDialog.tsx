@@ -16,9 +16,9 @@ interface JobDialogProps {
 const JobDialog = ({ open, onOpenChange, job }: JobDialogProps) => {
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="max-w-3xl">
+      <DialogContent className="max-w-[95vw] w-full md:max-w-3xl lg:max-w-4xl xl:max-w-5xl h-[90vh] overflow-y-auto">
         <DialogHeader>
-          <DialogTitle className="text-right">
+          <DialogTitle className="text-right text-xl md:text-2xl">
             {job ? "تعديل وظيفة" : "إضافة وظيفة جديدة"}
           </DialogTitle>
         </DialogHeader>

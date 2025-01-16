@@ -65,16 +65,16 @@ const JobForm = ({ job, onSuccess }: JobFormProps) => {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6 p-2 md:p-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           <FormField
             control={form.control}
             name="job_number"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>رقم الوظيفة</FormLabel>
+                <FormLabel className="text-base md:text-lg">رقم الوظيفة</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input className="text-base md:text-lg p-2 md:p-3" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -86,9 +86,9 @@ const JobForm = ({ job, onSuccess }: JobFormProps) => {
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>المسمى الوظيفي</FormLabel>
+                <FormLabel className="text-base md:text-lg">المسمى الوظيفي</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input className="text-base md:text-lg p-2 md:p-3" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -101,25 +101,25 @@ const JobForm = ({ job, onSuccess }: JobFormProps) => {
           name="description"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>الوصف الوظيفي</FormLabel>
+              <FormLabel className="text-base md:text-lg">الوصف الوظيفي</FormLabel>
               <FormControl>
-                <Textarea {...field} className="min-h-[100px]" />
+                <Textarea className="min-h-[100px] md:min-h-[150px] text-base md:text-lg p-2 md:p-3" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           <FormField
             control={form.control}
             name="type"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>نوع الوظيفة</FormLabel>
+                <FormLabel className="text-base md:text-lg">نوع الوظيفة</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
-                    <SelectTrigger>
+                    <SelectTrigger className="text-base md:text-lg p-2 md:p-3">
                       <SelectValue placeholder="اختر نوع الوظيفة" />
                     </SelectTrigger>
                   </FormControl>
@@ -140,9 +140,9 @@ const JobForm = ({ job, onSuccess }: JobFormProps) => {
             name="location"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>الموقع</FormLabel>
+                <FormLabel className="text-base md:text-lg">الموقع</FormLabel>
                 <FormControl>
-                  <Input {...field} />
+                  <Input className="text-base md:text-lg p-2 md:p-3" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -155,9 +155,9 @@ const JobForm = ({ job, onSuccess }: JobFormProps) => {
           name="salary_range"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>نطاق الراتب</FormLabel>
+              <FormLabel className="text-base md:text-lg">نطاق الراتب</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input className="text-base md:text-lg p-2 md:p-3" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -169,9 +169,9 @@ const JobForm = ({ job, onSuccess }: JobFormProps) => {
           name="requirements"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>المتطلبات</FormLabel>
+              <FormLabel className="text-base md:text-lg">المتطلبات</FormLabel>
               <FormControl>
-                <Textarea {...field} className="min-h-[100px]" />
+                <Textarea className="min-h-[100px] md:min-h-[150px] text-base md:text-lg p-2 md:p-3" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -183,9 +183,9 @@ const JobForm = ({ job, onSuccess }: JobFormProps) => {
           name="benefits"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>المزايا</FormLabel>
+              <FormLabel className="text-base md:text-lg">المزايا</FormLabel>
               <FormControl>
-                <Textarea {...field} className="min-h-[100px]" />
+                <Textarea className="min-h-[100px] md:min-h-[150px] text-base md:text-lg p-2 md:p-3" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -197,25 +197,25 @@ const JobForm = ({ job, onSuccess }: JobFormProps) => {
           name="notes"
           render={({ field }) => (
             <FormItem>
-              <FormLabel>ملاحظات</FormLabel>
+              <FormLabel className="text-base md:text-lg">ملاحظات</FormLabel>
               <FormControl>
-                <Textarea {...field} className="min-h-[100px]" />
+                <Textarea className="min-h-[100px] md:min-h-[150px] text-base md:text-lg p-2 md:p-3" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
         />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           <FormField
             control={form.control}
             name="status"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>الحالة</FormLabel>
+                <FormLabel className="text-base md:text-lg">الحالة</FormLabel>
                 <Select onValueChange={field.onChange} defaultValue={field.value}>
                   <FormControl>
-                    <SelectTrigger>
+                    <SelectTrigger className="text-base md:text-lg p-2 md:p-3">
                       <SelectValue placeholder="اختر الحالة" />
                     </SelectTrigger>
                   </FormControl>
@@ -236,10 +236,11 @@ const JobForm = ({ job, onSuccess }: JobFormProps) => {
             name="deadline"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>تاريخ الانتهاء</FormLabel>
+                <FormLabel className="text-base md:text-lg">تاريخ الانتهاء</FormLabel>
                 <FormControl>
                   <Input 
                     type="date" 
+                    className="text-base md:text-lg p-2 md:p-3"
                     {...field}
                     value={field.value instanceof Date ? field.value.toISOString().split('T')[0] : field.value}
                     onChange={(e) => field.onChange(new Date(e.target.value))}
@@ -251,8 +252,11 @@ const JobForm = ({ job, onSuccess }: JobFormProps) => {
           />
         </div>
 
-        <div className="flex justify-end gap-4 mt-6">
-          <Button type="submit">
+        <div className="flex flex-col-reverse sm:flex-row justify-end gap-4 mt-8">
+          <Button 
+            type="submit"
+            className="w-full sm:w-auto text-base md:text-lg py-2 md:py-3 px-4 md:px-6"
+          >
             {job ? "تحديث" : "إضافة"}
           </Button>
         </div>
