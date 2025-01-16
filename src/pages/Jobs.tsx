@@ -3,7 +3,10 @@ import { Plus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import JobDialog from "@/components/jobs/JobDialog";
 import JobsList from "@/components/jobs/JobsList";
+import JobApplicationsAnalysis from "@/components/jobs/JobApplicationsAnalysis";
+import TopCandidates from "@/components/jobs/TopCandidates";
 import { Job } from "@/types/jobs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const Jobs = () => {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
@@ -29,10 +32,43 @@ const Jobs = () => {
         </Button>
       </div>
 
-      <JobsList onEdit={handleEdit} />
-      
-      <JobDialog 
-        open={isDialogOpen} 
+      <Tabs defaultValue="jobs" className="space-y-6">
+        <TabsList className="grid w-full grid-cols-3 lg:w-[400px]">
+          <TabsTrigger value="jobs">الوظائف</TabsTrigger>
+          <TabsTrigger value="analysis">تحليل التقديمات</TabsTrigger>
+          <TabsTrigger value="candidates">المرشحون</TabsTrigger>
+        </TabsList>
+
+        <TabsContent value="jobs">
+          <JobsList onEdit={handleEdit} />
+        </TabsContent>
+
+        <TabsContent value="analysis">
+          {selectedJob ? (
+            <JobApplicationsAnalysis
+              jobId={selectedJob.id}
+              requirements={selectedJob.requirements || ""}
+            />
+          ) : (
+            <div className="text-center py-8 text-gray-500">
+              الرجاء اختيار وظيفة لعرض تحليل التقديمات
+            </div>
+          )}
+        </TabsContent>
+
+        <TabsContent value="candidates">
+          {selectedJob ? (
+            <TopCandidates jobId={selectedJob.id} />
+          ) : (
+            <div className="text-center py-8 text-gray-500">
+              الرجاء اختيار وظيفة لعرض المرشحين
+            </div>
+          )}
+        </TabsContent>
+      </Tabs>
+
+      <JobDialog
+        open={isDialogOpen}
         onOpenChange={setIsDialogOpen}
         job={selectedJob}
       />
