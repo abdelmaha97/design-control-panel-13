@@ -1,5 +1,22 @@
 import { useState } from "react";
-import { Menu, Home, Users, FileText, Bell, Settings, Folder, Newspaper, Megaphone, Briefcase, Building, User, Gavel, DollarSign } from "lucide-react";
+import { 
+  Menu, 
+  Home, 
+  Users, 
+  FileText, 
+  Bell, 
+  Settings, 
+  Folder, 
+  Newspaper, 
+  Megaphone, 
+  Briefcase, 
+  Building, 
+  User, 
+  Gavel, 
+  DollarSign,
+  Shield,
+  UserCog 
+} from "lucide-react";
 import { Button } from "../ui/button";
 import SidebarItem from "./SidebarItem";
 import SidebarDropdown from "./SidebarDropdown";
@@ -39,6 +56,16 @@ const Sidebar = () => {
             { icon: <Newspaper className="h-5 w-5" />, label: "الاخبار والفعاليات", to: "/news" },
             { icon: <Megaphone className="h-5 w-5" />, label: "اعلان النتائج", to: "/results" },
             { icon: <Briefcase className="h-5 w-5" />, label: "المشاريع", to: "/projects" },
+          ]}
+        />
+
+        <SidebarDropdown 
+          icon={<Shield className="h-5 w-5" />}
+          label="إدارة النظام"
+          sidebarOpen={sidebarOpen}
+          items={[
+            { icon: <Users className="h-5 w-5" />, label: "إدارة المستخدمين", to: "/users" },
+            { icon: <UserCog className="h-5 w-5" />, label: "الأدوار والصلاحيات", to: "/roles" },
           ]}
         />
 
