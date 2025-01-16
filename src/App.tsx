@@ -1,49 +1,84 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import DashboardLayout from './components/DashboardLayout';
-import ProtectedRoute from './components/ProtectedRoute';
-import Login from './pages/Login';
-import Index from './pages/Index';
-import Reports from './pages/Reports';
-import Notifications from './pages/Notifications';
-import SettingsPage from './pages/Settings';
-import NewsPage from './pages/News';
-import ResultsPage from './pages/Results';
-import ProjectsPage from './pages/Projects';
-import IndividualUsersPage from './pages/IndividualUsers';
-import CompaniesPage from './pages/Companies';
-import Jobs from './pages/Jobs';
-import Tenders from './pages/Tenders';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./pages/Login";
+import Dashboard from "./pages/Dashboard";
+import Jobs from "./pages/Jobs";
+import News from "./pages/News";
+import Projects from "./pages/Projects";
+import Results from "./pages/Results";
+import Auctions from "./pages/Auctions";
+import DashboardLayout from "./components/DashboardLayout";
+import ProtectedRoute from "./components/ProtectedRoute";
+import { Toaster } from "./components/ui/toaster";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
         <Route path="/login" element={<Login />} />
         <Route
-          path="/*"
+          path="/"
           element={
             <ProtectedRoute>
               <DashboardLayout>
-                <Routes>
-                  <Route path="/" element={<Index />} />
-                  <Route path="/reports" element={<Reports />} />
-                  <Route path="/notifications" element={<Notifications />} />
-                  <Route path="/settings" element={<SettingsPage />} />
-                  <Route path="/news" element={<NewsPage />} />
-                  <Route path="/results" element={<ResultsPage />} />
-                  <Route path="/projects" element={<ProjectsPage />} />
-                  <Route path="/individual-users" element={<IndividualUsersPage />} />
-                  <Route path="/companies" element={<CompaniesPage />} />
-                  <Route path="/jobs" element={<Jobs />} />
-                  <Route path="/tenders" element={<Tenders />} />
-                </Routes>
+                <Dashboard />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/jobs"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <Jobs />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/news"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <News />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/projects"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <Projects />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/results"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <Results />
+              </DashboardLayout>
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/auctions"
+          element={
+            <ProtectedRoute>
+              <DashboardLayout>
+                <Auctions />
               </DashboardLayout>
             </ProtectedRoute>
           }
         />
       </Routes>
+      <Toaster />
     </Router>
   );
-}
+};
 
 export default App;
