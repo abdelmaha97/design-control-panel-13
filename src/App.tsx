@@ -12,6 +12,7 @@ import ProjectsPage from './pages/Projects';
 import IndividualUsersPage from './pages/IndividualUsers';
 import CompaniesPage from './pages/Companies';
 import Jobs from './pages/Jobs';
+import Tenders from './pages/Tenders';
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
                   <Route path="/individual-users" element={<IndividualUsersPage />} />
                   <Route path="/companies" element={<CompaniesPage />} />
                   <Route path="/jobs" element={<Jobs />} />
+                  <Route path="/tenders" element={<Tenders />} />
                 </Routes>
               </DashboardLayout>
             </ProtectedRoute>
