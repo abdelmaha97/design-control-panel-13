@@ -1,5 +1,5 @@
-export type AuctionStatus = 'draft' | 'active' | 'completed' | 'cancelled';
-export type BidStatus = 'active' | 'accepted' | 'rejected';
+export type AuctionStatus = "draft" | "active" | "closed" | "cancelled";
+export type BidStatus = "active" | "withdrawn" | "accepted" | "rejected";
 
 export interface Auction {
   id: string;
@@ -27,8 +27,8 @@ export interface AuctionBid {
   bid_amount: number;
   bid_amount_url: string;
   bank_guarantee_url: string;
-  bank_guarantee_number: string;
-  bank_guarantee_date: Date;
+  bank_guarantee_number: string | null;
+  bank_guarantee_date: Date | null;
   status: BidStatus;
   bid_time: Date;
 }
