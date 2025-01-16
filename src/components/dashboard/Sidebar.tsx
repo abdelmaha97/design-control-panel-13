@@ -53,8 +53,8 @@ const Sidebar = () => {
         />
 
         <SidebarItem icon={<Briefcase className="h-5 w-5" />} label="إدارة الوظائف" to="/jobs" sidebarOpen={sidebarOpen} />
-        <SidebarItem icon={<Gavel className="h-5 w-5" />} label="إدارة المناقصات" sidebarOpen={sidebarOpen} />
-        <SidebarItem icon={<DollarSign className="h-5 w-5" />} label="إدارة المزادات" sidebarOpen={sidebarOpen} />
+        <SidebarItem icon={<Gavel className="h-5 w-5" />} label="إدارة المناقصات" to="/tenders" sidebarOpen={sidebarOpen} />
+        <SidebarItem icon={<DollarSign className="h-5 w-5" />} label="إدارة المزادات" to="/auctions" sidebarOpen={sidebarOpen} />
         <SidebarItem icon={<FileText className="h-5 w-5" />} label="إدارة التقارير" to="/reports" sidebarOpen={sidebarOpen} />
         <SidebarItem icon={<Bell className="h-5 w-5" />} label="الإشعارات" to="/notifications" sidebarOpen={sidebarOpen} />
         <SidebarItem icon={<Settings className="h-5 w-5" />} label="الإعدادات" to="/settings" sidebarOpen={sidebarOpen} />
