@@ -11,6 +11,7 @@ import ResultsPage from './pages/Results';
 import ProjectsPage from './pages/Projects';
 import IndividualUsersPage from './pages/IndividualUsers';
 import CompaniesPage from './pages/Companies';
+import Jobs from './pages/Jobs';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
                   <Route path="/projects" element={<ProjectsPage />} />
                   <Route path="/individual-users" element={<IndividualUsersPage />} />
                   <Route path="/companies" element={<CompaniesPage />} />
+                  <Route path="/jobs" element={<Jobs />} />
                 </Routes>
               </DashboardLayout>
             </ProtectedRoute>
