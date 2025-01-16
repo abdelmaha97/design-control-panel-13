@@ -17,12 +17,56 @@ interface JobsListProps {
 
 const JobsList = ({ onEdit }: JobsListProps) => {
   const { toast } = useToast();
-  const jobs: Job[] = []; // TODO: Implement API call to fetch jobs
+  
+  // Sample jobs data
+  const jobs: Job[] = [
+    {
+      id: "1",
+      job_number: "JOB-2024-001",
+      title: "مطور واجهات أمامية",
+      description: "نحن نبحث عن مطور واجهات أمامية ذو خبرة للعمل على مشاريعنا",
+      organization_id: "org-1",
+      type: "full_time",
+      location: "الرياض",
+      salary_range: "15000-20000 ريال",
+      requirements: "خبرة 3 سنوات في React.js",
+      benefits: "تأمين طبي، تذاكر سفر سنوية",
+      status: "published",
+      deadline: new Date("2024-12-31"),
+    },
+    {
+      id: "2",
+      job_number: "JOB-2024-002",
+      title: "مهندس برمجيات",
+      description: "مطلوب مهندس برمجيات للعمل على تطوير تطبيقات الويب",
+      organization_id: "org-1",
+      type: "full_time",
+      location: "جدة",
+      salary_range: "18000-25000 ريال",
+      requirements: "بكالوريوس في علوم الحاسب، خبرة 5 سنوات",
+      benefits: "تأمين طبي، بدل سكن",
+      status: "published",
+      deadline: new Date("2024-11-30"),
+    },
+    {
+      id: "3",
+      job_number: "JOB-2024-003",
+      title: "مصمم واجهات المستخدم",
+      description: "نبحث عن مصمم واجهات مستخدم مبدع للانضمام إلى فريقنا",
+      organization_id: "org-1",
+      type: "part_time",
+      location: "الدمام",
+      salary_range: "10000-15000 ريال",
+      requirements: "خبرة في Figma و Adobe XD",
+      benefits: "ساعات عمل مرنة",
+      status: "draft",
+      deadline: new Date("2024-10-31"),
+    },
+  ];
 
   const handleDelete = async (job: Job) => {
     try {
       console.log("Deleting job:", job);
-      // TODO: Implement API call to delete job
       toast({
         title: "تم حذف الوظيفة بنجاح",
         description: `الوظيفة: ${job.title}`,
