@@ -157,7 +157,7 @@ const JobApplicationsAnalysis = ({ jobId, requirements }: JobApplicationsAnalysi
                       <Badge
                         variant={
                           application.status === "accepted"
-                            ? "success"
+                            ? "default"
                             : application.status === "rejected"
                             ? "destructive"
                             : "secondary"
